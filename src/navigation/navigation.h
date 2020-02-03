@@ -45,7 +45,7 @@ class Navigation {
  public:
 
    // Constructor
-  explicit Navigation(const std::string& map_file, ros::NodeHandle* n);
+  explicit Navigation(const std::string& map_file, ros::NodeHandle* n, float dist);
 
   // Used in callback from localization to update position.
   void UpdateLocation(const Eigen::Vector2f& loc, float angle);
@@ -86,6 +86,13 @@ class Navigation {
   Eigen::Vector2f nav_goal_loc_;
   // Navigation goal angle.
   float nav_goal_angle_;
+
+  // Distance left to travel
+  float distance_left_;
+  // Car current velocity
+  float current_velocity_;
+  // Boolean to set odometry location
+  bool set_odom_;
 };
 
 }  // namespace navigation
